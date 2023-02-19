@@ -12,9 +12,9 @@ The program can be run in both CLI and GUI modes:
 
 The program requires the following libraries to be installed:
 
-- OpenCV (cv2) 📚
+- OpenCV 📚
 - NumPy 🧮
-- PyQT5 (for GUI) 🖥️
+- PyQT5 (for GUI only) 🖥️
 
 ## Contributing 🤝
 
