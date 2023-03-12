@@ -23,8 +23,8 @@ class Worker(QObject):
         print(video_file)
         QThread.__init__(self)
         self.video_file = video_file
-        self.core = core_module.Core(video_file)
-        self.output_path = self.core.get_output_path()
+        # self.core = core_module.Core(video_file)
+        # self.output_path = self.core.get_output_path()
 
     def run(self):
         self.core.extract_unique_frames()
@@ -148,6 +148,8 @@ class App(QMainWindow):
         self.extract_frames_button.setText("STOP")
 
         if self.video_file:
+            from inspect import getmembers, isfunction
+            print(getmembers(core_module))
             self.core = core_module.Core(self.video_file)
             self.worker.core = self.core
             self.thread.start()

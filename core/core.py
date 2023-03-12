@@ -61,6 +61,8 @@ class Core:
         f_path, f_name = os.path.split(self.video_file)
         out_path = os.path.join(f_path, os.path.splitext(f_name)[0])
 
+        self.output_path = out_path
+
         if os.path.exists(out_path):
             return out_path
         else:
@@ -69,6 +71,7 @@ class Core:
 
     def extract_unique_frames(self):
 
+        self.get_output_path()
         cap = cv2.VideoCapture(self.video_file)
         frame_count = int(cap.get(cv2.CAP_PROP_FRAME_COUNT))
         fps = cap.get(cv2.CAP_PROP_FPS)
@@ -81,7 +84,7 @@ class Core:
 
         text_pb = ""
         temp_text = "FPS:{} | Total:{} | SkipRate:{} | Valid:{} | Threshold:{}%"
-        temp_text.format(fps, frame_count, self.FPS_SKIP_RATE, int(frame_count * self.FPS_SKIP_RATE), self.THRESHOLD)
+        temp_text = temp_text.format(int(fps), frame_count, self.FPS_SKIP_RATE, int(frame_count * self.FPS_SKIP_RATE), self.THRESHOLD)
         print("---" + "-" * len(temp_text))
         print(temp_text)
         print("---" + "-" * len(temp_text))
