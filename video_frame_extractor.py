@@ -12,8 +12,8 @@ if __name__ == '__main__':
                     epilog='python vfe.py path/video.mp4')
 
     parser.add_argument('video_file', help='path to video file')
-    parser.add_argument('-s', '--skip-rate', help='Percentage of frames should skip within a sec (0.1=90; 0.5=50; 1=0)')
-    parser.add_argument('-t', '--threshold', help='Extract if percentage of difference between two frames greater than THRESHOLD')
+    parser.add_argument('-s', '--skip-rate', type=float, help='Percentage of frames should skip within a sec (0.1=90; 0.5=50; 1=0)')
+    parser.add_argument('-t', '--threshold', type=int, help='Extract if percentage of difference between two frames greater than THRESHOLD')
 
     args = parser.parse_args()
     print(args.video_file, args.skip_rate, args.threshold)
